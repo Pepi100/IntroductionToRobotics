@@ -1,4 +1,4 @@
-<h1 align="center" style="font-size:20px">
+<h1 align="center" style="font-size:20">
 Introduction to Robotics Course
 </h1>
 
@@ -7,33 +7,31 @@ Everything related to the course.
 </p>
 
 <p align="center">
-  :microscope: <a href="https://github.com/Pepi100/IntroductionToRobotics/tree/master/Courses">About</a>&#160;
-:pencil: <a href="https://github.com/Pepi100/IntroductionToRobotics/tree/master/Homework">Homework</a>&#160;
+  :microscope: <a href="#about">About</a>&#160;
+:pencil: <a href="#content">Content</a>&#160;
   :paperclip:<a href="#others">Others</a>
 </p>
 
 ## About
 
-### Course Objectives:
+#### Course Objectives:
 1. Development of POC (Proof of Concept) and Final Product Development Skills
 2. Encouragement of Critical Thinking and Problem Solving
 3. Programming Skills Development
 4. Understanding Basic Robotics Concepts
 5. Understanding and Using Microcontrollers
 
-### This repo will containt all materials related to the course.
+ This repo will contain all materials related to the course.
 
-## Contents
+## Content
 
-<details>
-  <summary> 
-   <strong> Homework #1 : Controlling an RGB Led </strong>
-  </summary>
+### Homework #1 : Controlling an RGB Led </strong>
+ 
 
-
-<img src="TODO" align="right"
-     alt="Diagram" width="600" height="250">
 ### Components Used
+
+<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/Diagram.png" align="right"
+     alt="Diagram" width="600">
 
 * 1x RGB Led
 * 3x Potentiometers
@@ -47,11 +45,6 @@ Everything related to the course.
 ### Technical Task
 
 > This assignment focuses on controlling each channel (Red, Green, and Blue) of an RGB LED using individual potentiometers. By the end of this task, you will gain experience in interfacing potentiometers with the Arduino and controlling RGB LEDs based on the analog readings.
-
-
-  </details>
-<details>
-
 
 
 
