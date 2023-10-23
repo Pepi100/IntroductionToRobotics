@@ -37,23 +37,30 @@ Everything related to the course.
 * 3x Potentiometers
 * 1x Arduino Uno
 * 1x Half breadboard
-* 1x 220&#8486; rezistor
+* 3x 220&#8486; rezistor
 * many colorful wires
 
   [Wokwi Implementation](https://wokwi.com/projects/379141484912992257)
 
-### Technical Task
+#### Technical Task
 
 > This assignment focuses on controlling each channel (Red, Green, and Blue) of an RGB LED using individual potentiometers. By the end of this task, you will gain experience in interfacing potentiometers with the Arduino and controlling RGB LEDs based on the analog readings.
+
+<details>
+  <summary>Iterations</summary>
+
+
+</details>
 
 
 
 ## Others
-### Resources
+#### Resources
 1. :triangular_ruler: [Wokwi](https://wokwi.com/) - Project diagram application.
 2. :clubs: [Arduino Style Guide](https://github.com/Irikos/arduino-style-guide) - Style guided started by Andrei Dumitriu.
+3. :blue_book: [Arduino Language Reference](https://www.arduino.cc/reference/en/) - Arduino Documentation.
 
-### Credits
+#### Credits
 
 - All courses, laboratories and homework assignments were provided by Ph. D candidate [Andrei Dumitriu](https://github.com/Irikos).
 -  Lab tutor, friendly face and always there to answer questions: [Vlad Toader](https://github.com/vladfxstoader) 
