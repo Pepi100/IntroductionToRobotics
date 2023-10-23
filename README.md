@@ -48,6 +48,9 @@ Everything related to the course.
 
 <details>
   <summary>Iterations</summary>
+  <img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/Diagram.png" align="right"
+     alt="Diagram" width="600">
+    This initial version did work, however, the red LED was significantly brighter than the others. In order to fix this...
 
 
 </details>
