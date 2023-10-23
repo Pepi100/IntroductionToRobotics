@@ -56,8 +56,9 @@ Everything related to the course.
 
   <h4>Version 1</h4>
   <img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/V1Diagram.png" align="right"
-     alt="Diagram" width="600">
-  <span style='color: crimson;'>1x 220&#8486; rezistor</span>
+     alt="Diagram" width="500">
+  <p style='color: crimson;'>1x 220&#8486; rezistor</p>
+  
   
   <p>This initial version used only ore resistor for the entire circuit. It did work, however, the red LED was significantly brighter than the others. According to <a href="https://os.mbed.com/users/4180_1/notebook/rgb-leds/#:~:text=Resistor%20values%20are%20typically%20around,of%20the%20light%20wave%20increases.">this</a> article, the voltage drop of the LED tends to rise as the frequency of the light wave increases. Therefore, it is suitable to use different resistors for each color of the RGB LED.
   </p>
