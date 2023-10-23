@@ -30,7 +30,7 @@ Everything related to the course.
 
 ### Components Used
 
-<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/V1V1Diagram.png" align="right"
+<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/FinalDiagram.png" align="right"
      alt="Diagram" width="600">
 
 * 1x RGB Led
@@ -41,7 +41,7 @@ Everything related to the course.
 * 2x 100&#8486; rezistors
 * many colorful wires
 
-  [Wokwi Implementation](https://wokwi.com/projects/379141484912992257)
+[Wokwi Implementation](https://wokwi.com/projects/379141484912992257)
 
 #### Technical Task
 
