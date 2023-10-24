@@ -9,7 +9,7 @@ Everything related to the course.
 <p align="center">
   :microscope: <a href="#about">About</a>&#160;
 :pencil: <a href="#content">Content</a>&#160;
-  :paperclip:<a href="#others">Others</a>
+  :paperclip:<a href="#resources">Others</a>
 </p>
 
 ## About
@@ -23,15 +23,16 @@ Everything related to the course.
 
  This repo will contain all materials related to the course.
 
+</br>
+
 ## Content
 
 ### Homework #1 : Controlling an RGB Led </strong>
  
-
-### Components Used
-
-<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/V1V1Diagram.png" align="right"
+<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/FinalDiagram.png" align="right"
      alt="Diagram" width="600">
+
+#### Components Used
 
 * 1x RGB Led
 * 3x Potentiometers
@@ -41,7 +42,10 @@ Everything related to the course.
 * 2x 100&#8486; rezistors
 * many colorful wires
 
-  [Wokwi Implementation](https://wokwi.com/projects/379141484912992257)
+[Wokwi Implementation](https://wokwi.com/projects/379141484912992257)
+</br>
+</br>
+</br>
 
 #### Technical Task
 
@@ -49,22 +53,31 @@ Everything related to the course.
 
 <details>
   <summary>Iterations</summary>
+
+  <h4>Version 1</h4>
   <img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/V1Diagram.png" align="right"
-     alt="Diagram" width="600">
-    <p style="color:firebrick;">1x 220&#8486; rezistor</p>
-    <p>This initial version did work, however, the red LED was significantly brighter than the others. According to <a href="https://os.mbed.com/users/4180_1/notebook/rgb-leds/#:~:text=Resistor%20values%20are%20typically%20around,of%20the%20light%20wave%20increases.">this</a> article, the voltage drop of the LED tends to rise as the frequency of the light wave increases. Therefore, it is suitable to use different resistors for each color of the RGB LED.
-    </p>
+     alt="Diagram" width="500">
+  <p style='color: crimson;'>1x 220&#8486; rezistor</p>
+  
+  
+  <p>This initial version used only ore resistor for the entire circuit. It did work, however, the red LED was significantly brighter than the others. According to <a href="https://os.mbed.com/users/4180_1/notebook/rgb-leds/#:~:text=Resistor%20values%20are%20typically%20around,of%20the%20light%20wave%20increases.">this</a> article, the voltage drop of the LED tends to rise as the frequency of the light wave increases. Therefore, it is suitable to use different resistors for each color of the RGB LED.
+  </p>
+<!--   </br> -->
+  <p>With the available choices, I've selected 2x 100&#8486; resistors for the blue and green LEDs.</p>
 </details>
 
 
+</br>
+</br>
+</br>
+</br>
 
-## Others
-#### Resources
+
+### Resources
 1. :triangular_ruler: [Wokwi](https://wokwi.com/) - Project diagram application.
 2. :clubs: [Arduino Style Guide](https://github.com/Irikos/arduino-style-guide) - Style guided started by Andrei Dumitriu.
 3. :blue_book: [Arduino Language Reference](https://www.arduino.cc/reference/en/) - Arduino Documentation.
 
-#### Credits
-
+### Credits
 - All courses, laboratories and homework assignments were provided by Ph. D candidate [Andrei Dumitriu](https://github.com/Irikos).
 -  Lab tutor, friendly face and always there to answer questions: [Vlad Toader](https://github.com/vladfxstoader) 
