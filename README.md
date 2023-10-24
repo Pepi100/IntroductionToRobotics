@@ -43,6 +43,8 @@ Everything related to the course.
 * many colorful wires
 
 [Wokwi Implementation](https://wokwi.com/projects/379141484912992257)
+
+[Demo link](https://youtu.be/U9Ul7x-ILts)
 </br>
 </br>
 </br>
@@ -52,7 +54,7 @@ Everything related to the course.
 > This assignment focuses on controlling each channel (Red, Green, and Blue) of an RGB LED using individual potentiometers. By the end of this task, you will gain experience in interfacing potentiometers with the Arduino and controlling RGB LEDs based on the analog readings.
 
 <details>
-  <summary>Iterations</summary>
+  <summary> Development process</summary>
 
   <h4>Version 1</h4>
   <img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/V1Diagram.png" align="right"
@@ -64,11 +66,25 @@ Everything related to the course.
   </p>
 <!--   </br> -->
   <p>With the available choices, I've selected 2x 100&#8486; resistors for the blue and green LEDs.</p>
+
+</br>
+</br>
+   <h4>Version 2</h4>
+   
+  <p style='color: crimson;'>Filtering signal</p>
+  
+  
+  <p>
+    This second version brings modifications to the code. The main flaw of version 1 was the flickering of the green LED when adjusting the other knobs. I`ve manually implemented a high pass filter such that values below a certain threshold would not register.
+  </p>
+    <p>
+    LED values are now updated every 10 mills, attempting to reduce flickering and provide a smoother output.
+  </p>
+<!--   </br> -->
 </details>
 
 
-</br>
-</br>
+
 </br>
 </br>
 
