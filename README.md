@@ -27,7 +27,7 @@ Everything related to the course.
 
 ## Content
 
-### Homework #1 : Controlling an RGB Led </strong>
+### Homework #2 : RGB Led
  
 <img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%232%20-%20RGB%20Led/FinalDiagram.png" align="right"
      alt="Diagram" width="600">
@@ -88,6 +88,36 @@ Everything related to the course.
 </br>
 </br>
 
+### Homework #3 : Elevator
+ 
+<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%233%20-%20Elevator/Diagram.png" align="right"
+     alt="Diagram" width="500">
+
+#### Components Used
+
+* 5x LEDs
+* 4x Buttons
+* 1x Active Buzzer
+* 1x Arduino Uno
+* 1x Full breadboard
+* 1x Mini breadboard
+* 4x 220&#8486; rezistor
+* 2x 100&#8486; rezistors
+* many colorful wires
+
+[Wokwi Implementation](https://wokwi.com/projects/380099046031760385)
+
+[Demo link](https://youtu.be/U9Ul7x-ILts)
+
+#### Technical Task
+>This assignment involves simulating a 3-floor elevator control system using
+LEDs, buttons, and a buzzer with Arduino. By the end of this task, you will gain
+experience in using button state change, implementing debouncing techniques,
+and coordinating multiple components to represent real-world scenarios.
+
+
+</br>
+</br>
 
 ### Resources
 1. :triangular_ruler: [Wokwi](https://wokwi.com/) - Project diagram application.
