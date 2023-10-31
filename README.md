@@ -45,6 +45,9 @@ Everything related to the course.
 [Wokwi Implementation](https://wokwi.com/projects/379141484912992257)
 
 [Demo link](https://youtu.be/U9Ul7x-ILts)
+
+
+
 </br>
 </br>
 </br>
@@ -107,7 +110,7 @@ Everything related to the course.
 
 [Wokwi Implementation](https://wokwi.com/projects/380099046031760385)
 
-[Demo link](https://youtu.be/U9Ul7x-ILts)
+[Demo link](https://youtu.be/kjwKA3ZZ8L0)
 
 #### Technical Task
 >This assignment involves simulating a 3-floor elevator control system using
@@ -115,6 +118,50 @@ LEDs, buttons, and a buzzer with Arduino. By the end of this task, you will gain
 experience in using button state change, implementing debouncing techniques,
 and coordinating multiple components to represent real-world scenarios.
 
+<details>
+  <summary> How it works:</summary>
+
+  <p>
+    The first part of the main loop is dedicated to deboucing the 4 buttons. Each iteration of loop() checks whether button _#indexButton_ has been pressed and starts the debouncing proccess.
+  </p>
+
+  <p>
+    The elevator is controlled in a 5 stage system:
+  </p>
+
+| Stage | Meaning           |
+| ------------- |:-------------:|
+| -2     | descending | 
+| -1 | has descended, is now stopped|
+| 0 | completedly stopped      |
+| 1 | has descended, is now stopped|
+| 2 | ascending      |
+
+Stages -1 and 1 are used to keep a smoother operation of the elevator. A real evelator tends to keep the direction of movement unless there are no floors to visit in that direction.
+For example:
+```
+  Elevator is at floor 2;
+  Buttons on floors 3, 1 and 4 are pressed in this order;
+  The common order we would want the elevator to travel is: 3 -> 4 -> 1, despite the actual pressing order.
+```
+This is implemented by keeping track of the last direction of travel and prioritizing the visit of floors in that direction.
+
+<p>
+    Similarly, a stage system is used to keep track of the functionality of the doors:
+  </p>
+
+| Stage | Meaning           |
+| ------------- |:-------------:|
+| -2     | opening | 
+| -1 | closing |
+| 0 | closed|
+| 1 | open|
+
+Every time a new floor is reached, the elevator checks whether the button for that floor has been pressed and only opens the doors if that is the case.
+During closing and opening of the doors, a 2-note sound is played.
+
+
+</details>
 
 </br>
 </br>
