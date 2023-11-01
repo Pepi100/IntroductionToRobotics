@@ -88,32 +88,12 @@ void blinkUpdate(){
   }
 }
 
-void takePassangers(){
-  
-}
-
-void doorSound(){
-  if(doors == -1){
-    if(millis() >= doorTime+ DOORS_TIME/2){
-      noTone(buzzerPin);
-      tone(buzzerPin, SECOND_NOTE);
-    }
-    if(millis() >= doorTime+ DOORS_TIME){
-      noTone(buzzerPin);
-      doors =1;
-    }
-  }
-
-}
 
 void loop() {
 
-  //with every iteration, current position LED;
-    // showCurrentFloor();
     blinkUpdate();
 
   //read each button value
-
     floors[floorIndex].reading = digitalRead(floors[floorIndex].buttonPin);
     if (floors[floorIndex].reading != floors[floorIndex].lastButtonState) {
       // reset the debouncing timer
@@ -138,8 +118,6 @@ void loop() {
   floors[floorIndex].lastButtonState = floors[floorIndex].reading;
   
 
-
-// at this point, after all that effort, we can properly read button input
 
 
 if(doors == -2){
@@ -178,7 +156,7 @@ else
   case 0:
         //scan for a new level to go to;
         for(int i=0; i<FLOOR_NUMBER;i++){
-          if(floors[i].buttonPressed==1){
+          if(floors[i].buttonPressed==1 && i!= elevator){
              
                 
              
