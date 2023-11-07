@@ -186,7 +186,7 @@ During closing and opening of the doors, a 2-note sound is played.
 
 [Wokwi Implementation](https://wokwi.com/projects/380383384120190977) - using [interrupts](https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/).
 
-[Demo link](https://youtu.be/kjwKA3ZZ8L0)
+[Demo link](https://youtu.be/Je8YQQhEayg)
 
 #### Technical Task
 >The task involves using the joystick to control the position of the segment and "draw" on the display. The objective is to ensure that the movement between segments is natural, allowing jumps only to neighboring positions without passing through "walls."
