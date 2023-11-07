@@ -163,6 +163,63 @@ During closing and opening of the doors, a 2-note sound is played.
 
 </details>
 
+
+</br>
+</br>
+
+### Homework #4 : 7 - Segment Display
+ 
+<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%234%20-%207%20Segment/Diagram.png" align="right"
+     alt="Diagram" width="500">
+
+#### Components Used
+
+* 1x 7-Segment Display
+* 1x Joystick
+* 1x Arduino Uno
+* 1x Half breadboard
+* 1x Mini breadboard
+* 8x 330&#8486; rezistors
+* many colorful wires
+
+[Wokwi Implementation](https://wokwi.com/projects/380141001565991937)
+
+[Wokwi Implementation](https://wokwi.com/projects/380383384120190977) - using [interrupts](https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/).
+
+[Demo link](https://youtu.be/Je8YQQhEayg)
+
+#### Technical Task
+>The task involves using the joystick to control the position of the segment and "draw" on the display. The objective is to ensure that the movement between segments is natural, allowing jumps only to neighboring positions without passing through "walls."
+>The initial position should be on the DP. The current
+position always blinks (irrespective of the fact that the segment is on or
+off). Use the joystick to move from one position to neighbors (see table for
+corresponding movement). Short pressing the button toggles the segment
+state from ON to OFF or from OFF to ON. Long pressing the button
+resets the entire display by turning all the segments OFF and moving the
+current position to the decimal point.
+
+<details>
+  <summary> How it works:</summary>
+
+  <p>
+    In the first part of the program we declare the movement matrix that keeps track of the possible moves from each position on the 7-segment display.
+  </p>
+
+Current| UP | DOWN | LEFT | RIGHT
+| ----- |  ----- |  ----- |  ----- |  ----- |
+a | N/A | g | f | b
+b | a | g | f | N/A
+c | g | d | e | dp
+d | g | N/A | e | c
+e | g | d | N/A | c
+f | a | g | N/A | b
+g | a | d | N/A | N/A
+dp | N/A | N/A | c | N/A
+
+
+
+</details>
+
 </br>
 </br>
 
