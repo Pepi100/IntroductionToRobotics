@@ -259,7 +259,7 @@ dp | N/A | N/A | c | N/A
 
 ### Homework #6 : 7 - Environment Monitor
  
-<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%234%20-%207%20Segment/Diagram.png" align="right"
+<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%236%20-%20Environment%20Monitor%20and%20Logger/Diagram.png" align="right"
      alt="Diagram" width="500">
 
 #### Components Used
@@ -295,6 +295,9 @@ dp | N/A | N/A | c | N/A
   <summary> How it works:</summary>
 
   #### Main Loop
+  <img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%236%20-%20Environment%20Monitor%20and%20Logger/Loop.png" align="right"
+     alt="Diagram" width="500">
+  
   The main loop constantly reads data form the sensors and triggers the alert if necessary. It is also responsible for reading input from [serial](https://www.arduino.cc/reference/en/language/functions/communication/serial/), which it than passes to:
 
   ```cpp
