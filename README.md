@@ -257,6 +257,79 @@ dp | N/A | N/A | c | N/A
 </br>
 </br>
 
+### Homework #6 : 7 - Environment Monitor
+ 
+<img src="https://github.com/Pepi100/IntroductionToRobotics/blob/master/%234%20-%207%20Segment/Diagram.png" align="right"
+     alt="Diagram" width="500">
+
+#### Components Used
+
+* 1x RGB Led
+* 1x Ultrasonic Sensor (HC-SR04)
+* 1x Light-Dependent Resistor
+* 1x Arduino Uno
+* 1x Half breadboard
+* 1x Mini breadboard
+* 1x 220&#8486; rezistor
+* 1x 10K&#8486; rezistor
+* 2x 100&#8486; rezistors
+* many colorful wires
+
+[Wokwi Implementation](https://wokwi.com/projects/380141001565991937)
+
+
+
+[Demo link]() - TBA
+
+#### Technical Task
+>The task involves developing a "Smart Environment Monitor and Logger" using Arduino. This system aims to utilize various sensors for gathering environmental data, logging this information into EEPROM, and offering visual feedback through an RGB LED. Additionally, it should provide user interaction via a Serial Menu. The project emphasizes the integration of sensor readings, memory management, Serial Communication, and the overall goal of constructing a menu.
+
+>In order to prevent wear on the EEPROM, the system should avoid excessive writing. It is recommended to refrain from using EEPROM.write and instead utilize EEPROM.update() or EEPROM.put() for more efficient write cycles.
+
+>Calibration of sensors is crucial for obtaining accurate readings. It is imperative to ensure that sensors are correctly calibrated, and their interval values are well-known and accounted for in the system.
+
+>To enhance the robustness of Serial Communication, the system should implement error handling mechanisms. This includes the ability to manage and respond to incorrect inputs, ensuring a more reliable and resilient communication interface.
+
+
+<details>
+  <summary> How it works:</summary>
+
+  #### Main Loop
+  The main loop constantly reads data form the sensors and triggers the alert if necessary. It is also responsible for reading input from [serial](https://www.arduino.cc/reference/en/language/functions/communication/serial/), which it than passes to:
+
+  ```cpp
+    void advanceMenu(int option);
+  ```
+  This function takes over the main functionality of the program. It takes the input from the user and uses it to perform the required action, according to the number of the current menu. This function implements a giant switch.
+
+
+
+  ```cpp
+    void printMenu();
+  ```
+  Works identical to advanceMenu(), but is only responsible for printing the options available in the current menu.
+
+
+
+  ```cpp
+  short movementMatrix[MENUS][MAX_MENU_OPTIONS]={
+    {-1,1,2,3,4},
+    {-1,11,12,13,0},
+    {-1,21,22,23,0},
+    {-1,31,32,33,0},
+    {-1,41,42,0,-1},
+  };
+  ```
+  In order to traverse faster between menus, I've implemented this movement matrix that keeps track of what menu (or submenu) the program should switch to next.
+
+
+
+
+</details>
+
+</br>
+</br>
+
 ### Resources
 1. :triangular_ruler: [Wokwi](https://wokwi.com/) - Project diagram application.
 2. :clubs: [Arduino Style Guide](https://github.com/Irikos/arduino-style-guide) - Style guided started by Andrei Dumitriu.
