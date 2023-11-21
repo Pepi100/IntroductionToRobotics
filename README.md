@@ -21,7 +21,8 @@ Everything related to the course.
 4. Understanding Basic Robotics Concepts
 5. Understanding and Using Microcontrollers
 
- This repo will contain all materials related to the course.
+ This repo will contain all materials related to the laboratory.
+ The code for each project is available in it's specific folder.
 
 </br>
 
@@ -275,7 +276,7 @@ dp | N/A | N/A | c | N/A
 * 2x 100&#8486; rezistors
 * many colorful wires
 
-[Wokwi Implementation](https://wokwi.com/projects/380141001565991937)
+[Wokwi Implementation](https://wokwi.com/projects/381915594073211905) - code only.
 
 
 
