@@ -19,7 +19,7 @@ int lightLevel;
 bool wrongOption = false;
 short currentMenu;
 short samplingInterval; //between 0 and 10000
-short ultrasonicAlert; //between 2 and
+short ultrasonicAlert; //between 2 and 200
 short LDRAlert; //between 0 and 1023
 short LEDColor[3];
 bool autoLED;
@@ -27,6 +27,9 @@ bool autosave;
 
 unsigned long lastSample = 0;
 unsigned long lastPrint = 0;
+int index = 0; //used to read LED colors
+bool alert = false; 
+
 
 //this matrix is used to traverse the multiple menu options
 short movementMatrix[MENUS][MAX_MENU_OPTIONS]={
@@ -44,8 +47,8 @@ void updateEEPROM(){
   EEPROM.put(6, LEDColor[0]); //takes up 2 bytes
   EEPROM.put(8, LEDColor[1]); //takes up 2 bytes
   EEPROM.put(10, LEDColor[2]); //takes up 2 bytes
-  EEPROM.put(11, autoLED); //needs 1 bit, we are allowing 1 byte because it`s the night before deadline :P
-  EEPROM.put(12, autosave); //same
+  EEPROM.put(12, autoLED); 
+  EEPROM.put(13, autosave); 
 }
 
 void readEEPROM(){
@@ -55,8 +58,8 @@ void readEEPROM(){
   EEPROM.get(6, LEDColor[0]); //takes up 2 bytes
   EEPROM.get(8, LEDColor[1]); //takes up 2 bytes
   EEPROM.get(10, LEDColor[2]); //takes up 2 bytes
-  EEPROM.get(11, autoLED); //needs 1 bit, we are allowing 1 byte because it`s the night before deadline :P
-  EEPROM.get(12, autosave); //same
+  EEPROM.get(12, autoLED); //needs 1 bit, we are allowing 1 byte because it`s the night before deadline :P
+  EEPROM.get(13, autosave); //same
 }
 
 void setup() {
@@ -69,6 +72,8 @@ void setup() {
  
 
   Serial.begin(BAUD_RATE);
+
+
   if(RESET){
     currentMenu = 0;
     samplingInterval = 2000;
@@ -84,6 +89,9 @@ void setup() {
     readEEPROM();
   }
   
+  if(autoLED == 0){
+    LEDOutput(LEDColor[0], LEDColor[1], LEDColor[2]);
+  }
 
   // Display the initial menu interface to the Serial Monitor upon startup
   screenFlush();
@@ -96,7 +104,7 @@ void loop() {
   
   currentMenuAction();
   readSensors();
-  // triggerAlerts();
+  triggerAlert();
   
 
   // Continuously checks for incoming serial data
@@ -114,6 +122,9 @@ void loop() {
   }
 
 }
+
+
+
 // Function to display a menu of options to the user
 void printMenu() {
   switch (currentMenu) {
@@ -142,7 +153,7 @@ void printMenu() {
         Serial.print("Select an option:\n");
         Serial.print("3.1 Current Sensor Readings\n");
         Serial.print("3.2 Current Sensor Settings\n");
-        Serial.print("3.3 Display Logged Data\n");
+        Serial.print("3.3 Current Saved Sensor Settings\n");
         Serial.print("3.4 Back\n");
         break;
     case 4:
@@ -173,6 +184,7 @@ void printMenu() {
         Serial.print("Select a value between 0 and 1023 or -1 to go back: \n");
         break;
     case 21:
+    case 33:
         short _samplingInterval, _ultrasonicAlert, _LDRAlert, _LEDColor[3];
         bool _autoLED, _autosave;
 
@@ -182,8 +194,8 @@ void printMenu() {
         EEPROM.get(6, _LEDColor[0]); //takes up 2 bytes
         EEPROM.get(8, _LEDColor[1]); //takes up 2 bytes
         EEPROM.get(10, _LEDColor[2]); //takes up 2 bytes
-        EEPROM.get(11, _autoLED); //needs 1 bit, we are allowing 1 byte because it`s the night before deadline :P
-        EEPROM.get(12, _autosave); //same
+        EEPROM.get(12, _autoLED); //needs 1 bit, we are allowing 1 byte because it`s the night before deadline :P
+        EEPROM.get(13, _autosave); //same
 
 
         Serial.print("Settings saved in EEPROM: \n");
@@ -204,8 +216,13 @@ void printMenu() {
         Serial.print((_autoLED)?("ON"):("OFF"));
         Serial.print("\n");
 
-        Serial.print("Last saved LED Color: ");
-        // Serial.print((_autoLED)?("ON"):("OFF"));
+        Serial.print("Last saved LED Color:\n");
+        Serial.print("RED: ");
+        Serial.print(_LEDColor[0]);
+        Serial.print(", GREEN: ");
+        Serial.print(_LEDColor[1]);
+        Serial.print(", BLUE: ");
+        Serial.print(_LEDColor[2]);
         Serial.print("\n");
 
         Serial.print("Autosave to EEPROM: ");
@@ -241,6 +258,7 @@ void printMenu() {
         Serial.print("Sampling interval: ");
         Serial.print(samplingInterval / 1000);
         Serial.print(" seconds\n");
+        Serial.print("Enter -1 to go back: \n");
         break;
     case 32:
         Serial.print("Current settings\n");
@@ -259,11 +277,26 @@ void printMenu() {
 
         Serial.print("Enter -1 to go back: \n");
         break;
-    case 33:
-        //saved settings (EEPROM)
-
-        break;
     case 41:
+        if(index == 0){
+          Serial.print("Manual LED Color\n");
+          Serial.print("Current value: ");
+          Serial.print(LEDColor[0]);
+          Serial.print(", ");
+          Serial.print(LEDColor[1]);
+          Serial.print(", ");
+          Serial.print(LEDColor[2]);
+          Serial.print("\n");
+          Serial.print("Enter a new value for RED or -1 to go back: \n");
+        }else{
+          if(index == 1){
+            Serial.print("Enter a new value for GREEN or -1 to go back: \n");
+          }else{
+            Serial.print("Enter a new value for BLUE or -1 to go back: \n");
+          }
+        }
+        
+
         break;
     case 42:
         //toggle auto led
@@ -317,7 +350,6 @@ void advanceMenu(int option) {
           }else{
             if(option >= 1 && option <= 10){
               samplingInterval = option * 1000;
-              //TODO SAVE
             }else{
               wrongOption = true;
             }
@@ -375,14 +407,34 @@ void advanceMenu(int option) {
           }
           break;
       case 31:
-          break;
       case 32:
-          currentMenu = 3;
-          break;
       case 33:
+          if(option == -1){
+            currentMenu = 3;
+          }else{
+            wrongOption = true;
+          }
           break;
-      case 41:
-          break;
+
+       case 41:
+        if(option == -1){
+            currentMenu = 4;
+          }else{
+            if(index == 0){
+              LEDColor[index] = option;
+              index++;
+            }else{
+              if(index == 1){
+                LEDColor[index] = option;
+                index++;
+              }else{
+                LEDColor[index] = option;
+                index = 0;
+              }
+            }
+        
+        }
+        break;
       case 42:
           if(option == -1){
             currentMenu = 4;
@@ -393,6 +445,13 @@ void advanceMenu(int option) {
               wrongOption = true;
             }
           }
+          if(autoLED == 0){
+            LEDOutput(LEDColor[0], LEDColor[1], LEDColor[2]);
+          }else{
+            LEDOutput(0, 0, 0);
+          }
+
+
           break;
      
     }
@@ -401,6 +460,33 @@ void advanceMenu(int option) {
       updateEEPROM();
     }
   }   
+}
+
+void triggerAlert(){
+  if(lightLevel > LDRAlert || distance < ultrasonicAlert * 0.034 / 2 ){
+    //alert should be active
+    if(alert == 0){
+      alert = 1;
+      if(autoLED){
+        LEDOutput(255,0,0); //alert LED is red
+      }
+    }
+  }else{
+    //alert should be off
+    if(alert == 1){
+      alert = 0;
+      if(autoLED){
+        LEDOutput(0,0,0);
+      }
+
+    }
+  }
+}
+
+void LEDOutput(int r, int g,  int b){
+  analogWrite(RED_PIN, r);
+  analogWrite(GREEN_PIN, g);
+  analogWrite(BLUE_PIN  , b);
 }
 
 void notAnOption(){
