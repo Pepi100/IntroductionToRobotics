@@ -78,6 +78,13 @@ int laps[LAP_NUMBER];
 byte savedLaps;
 byte savedLapsIndex;
 byte viewIndex;
+
+
+unsigned long holdTime = 700;
+unsigned long startHold;
+bool isHolding = 0;
+
+
 void setup() {
   // Initialize the pins connected to the shift register as outputs
   pinMode(latchPin, OUTPUT);
@@ -105,6 +112,10 @@ void setup() {
   savedLaps = 0;
   savedLapsIndex = 0;
   viewIndex = 0;
+
+  holdTime = 700;
+  startHold = 0;
+  isHolding = 0;
 }
 
 
@@ -165,10 +176,6 @@ void  resetButtonDebounce(){
   resetLastState = resetReading;
   
 }
-
-unsigned long holdTime = 700;
-unsigned long startHold;
-bool isHolding = 0;
 
 void  saveButtonDebounce(){
 
